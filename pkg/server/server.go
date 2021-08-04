@@ -97,6 +97,7 @@ type jsGlobals struct {
 	ConsolePlugins            []string `json:"consolePlugins"`
 	QuickStarts               string   `json:"quickStarts"`
 	ProjectAccessClusterRoles string   `json:"projectAccessClusterRoles"`
+	ServiceAccountToken		  string   `json:"ServiceAccountToken"`
 }
 
 type Server struct {
