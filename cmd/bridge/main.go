@@ -311,6 +311,7 @@ func main() {
 		}
 
 		k8sAuthServiceAccountBearerToken = string(bearerToken)
+		fmt.Println("!!!"+ k8sAuthServiceAccountBearerToken)
 
 		// If running in an OpenShift cluster, set up a proxy to the prometheus-k8s service running in the openshift-monitoring namespace.
 		if *fServiceCAFile != "" {
