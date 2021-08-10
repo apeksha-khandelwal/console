@@ -726,14 +726,6 @@ export const AlertsDetailsPage = withFallback(
             apiServerURL.split('.')[1]
           }.devcluster.openshift.com/logs/filter?`;
           try {
-            const requestHeaders: HeadersInit = new Headers();
-            requestHeaders.set('Access-Control-Allow-Origin', '*');
-            requestHeaders.set('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-            requestHeaders.set(
-              'Access-Control-Allow-Headers',
-              'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-            );
-            requestHeaders.set('Authenticaton-Bearer', window.SERVER_FLAGS.serviceAccountToken);
             const response = await coFetch(
               logExplorationApiUrl +
                 new URLSearchParams({
@@ -742,17 +734,17 @@ export const AlertsDetailsPage = withFallback(
                   maxlogs: '2',
                 }),
               {
-                headers: requestHeaders,
+                headers: {
+                  Authorization: `Bearer ${window.SERVER_FLAGS.serviceAccountToken}`,
+                },
               },
             );
-            // console.log(window.SERVER_FLAGS.serviceAccountToken+"!!!!");
             await response.json().then(() => {
               setLogExpApiFlag('success');
             });
           } catch (err) {
             // eslint-disable-next-line no-console
             setLogExpApiFlag('error');
-            // console.log("!!!Error in fetching response");
             throw err;
           }
         } else {

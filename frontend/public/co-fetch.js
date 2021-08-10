@@ -158,7 +158,6 @@ export const coFetch = async (url, options = {}, timeout = 60000) => {
       }
     }
   }
-
   return response;
 };
 
