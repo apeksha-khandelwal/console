@@ -1,0 +1,1 @@
+{"clusterName":"9aug","clusterID":"c441df3d-5305-4fdf-b661-c326d3bb42ff","infraID":"9aug-nbprr","aws":{"region":"us-east-1","identifier":[{"kubernetes.io/cluster/9aug-nbprr":"owned"},{"openshiftClusterID":"c441df3d-5305-4fdf-b661-c326d3bb42ff"}],"clusterDomain":"9aug.devcluster.openshift.com"}}

@@ -241,6 +241,7 @@ func main() {
 		QuickStarts:               *fQuickStarts,
 		AddPage:                   *fAddPage,
 		ProjectAccessClusterRoles: *fProjectAccessClusterRoles,
+		ServiceAccountToken: 	   *fK8sAuthBearerToken,
 	}
 
 	// if !in-cluster (dev) we should not pass these values to the frontend
@@ -311,7 +312,6 @@ func main() {
 		}
 
 		k8sAuthServiceAccountBearerToken = string(bearerToken)
-		fmt.Println("!!!"+ k8sAuthServiceAccountBearerToken)
 
 		// If running in an OpenShift cluster, set up a proxy to the prometheus-k8s service running in the openshift-monitoring namespace.
 		if *fServiceCAFile != "" {
@@ -562,7 +562,7 @@ func main() {
 		srv.ServiceAccountToken = *fK8sAuthBearerToken
 	case "oidc", "openshift":
 		bridge.ValidateFlagIs("user-auth", *fUserAuth, "oidc", "openshift")
-		srv.ServiceAccountToken = k8sAuthServiceAccountBearerToken
+		srv.ServiceAccountToken = *fK8sAuthBearerToken
 	default:
 		bridge.FlagFatalf("k8s-mode", "must be one of: service-account, bearer-token, oidc, openshift")
 	}
