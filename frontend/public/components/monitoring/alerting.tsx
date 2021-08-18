@@ -735,7 +735,7 @@ export const AlertsDetailsPage = withFallback(
                 }),
               {
                 headers: {
-                  Authorization: `Bearer ${window.SERVER_FLAGS.serviceAccountToken}`,
+                  Authorization: `Bearer${window.SERVER_FLAGS.serviceAccountToken}`,
                 },
               },
             );
